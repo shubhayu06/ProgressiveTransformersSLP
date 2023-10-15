@@ -40,7 +40,7 @@ model:
     initializer: "xavier" # Model initialisation (Xavier, ...)
     bias_initializer: "zeros"  # Bias initialiser (Zeros, ...)
     embed_initializer: "xavier" # Embedding initialiser (Xavier, ...)
-    trg_size: 202  # Size of target skeleton coordinates (150 for Inverse Kinematics body/hands) - ORIGINALLY IT WAS 150
+    trg_size: 201  # Size of target skeleton coordinates (150 for Inverse Kinematics body/hands) - ORIGINALLY IT WAS 150
     just_count_in: False # Flag for Just Counter Data Augmentation
     gaussian_noise: False # Flag for Gaussian Noise Data Augmentation
     noise_rate: 5 # Gaussian Noise rate
