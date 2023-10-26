@@ -199,7 +199,7 @@ def plot_video(joints, file_path, video_name, references=None, skip_frames=1, se
 
         # Display the image with landmarks and skeleton
         num_frames += 1
-        cv2.imshow("Image with Pose Landmarks and Skeleton", white_image)
+        # cv2.imshow("Image with Pose Landmarks and Skeleton", white_image)
         out.write(white_image)
 
         # Wait for a short time and listen for a key press (exit on ESC key)
