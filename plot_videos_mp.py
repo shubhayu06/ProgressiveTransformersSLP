@@ -13,7 +13,7 @@ from constants import PAD_TOKEN
 # sequence_ID = None
 
 
-def plot_video(joints, file_path, video_name, references=None, skip_frames=1, sequence_ID=None):
+def plot_video(joints, file_path, video_name, text_pred, text_ground, references=None, skip_frames=1, sequence_ID=None):
     # Number of elements to pick
     # num_elements_to_pick = 202
 
@@ -125,6 +125,8 @@ def plot_video(joints, file_path, video_name, references=None, skip_frames=1, se
         white_image.fill(255)  # Fill the image with white color
         cv2.putText(white_image, "Predicted Sign Pose", (180, 50), cv2.FONT_HERSHEY_SIMPLEX, 1,
                     (0, 0, 255), 2)
+        cv2.putText(white_image, f"{text_pred}", (45, 550), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
+                    (0, 0, 255), 1)
 
         # Ensure the pose_coordinates array has a length of 3 times the number of landmarks
         num_landmarks = len(pose_coordinates) // 3
@@ -187,6 +189,8 @@ def plot_video(joints, file_path, video_name, references=None, skip_frames=1, se
 
             cv2.putText(ref_frame, "Ground Truth Pose", (180, 50), cv2.FONT_HERSHEY_SIMPLEX, 1,
                         (0, 0, 255), 2)
+            cv2.putText(ref_frame, f"{text_ground}", (45, 550), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
+                        (0, 0, 255), 1)
 
             white_image = np.concatenate((white_image, ref_frame), axis=1)
 
