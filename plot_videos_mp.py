@@ -137,7 +137,7 @@ def plot_video(joints, file_path, video_name, text_pred, text_ground, references
 
         # Draw the detected pose landmarks and skeleton on the white image
         for i in range(num_landmarks):
-            x, y, _ = pose_coordinates[i * 3:i * 3 + 3]
+            x, y, _ = landmarks[i] # pose_coordinates[i * 3:i * 3 + 3]
             if 0 < x <= width and 0 < y <= height:
                 cv2.circle(white_image, (int(x), int(y)), 5, (0, 0, 255), -1)
 
@@ -172,7 +172,7 @@ def plot_video(joints, file_path, video_name, text_pred, text_ground, references
             # Draw these joints on the frame
             # Draw the detected pose landmarks and skeleton on the white image
             for i in range(ref_num_landmarks):
-                x, y, _ = pose_coordinates[i * 3:i * 3 + 3]
+                x, y, _ = landmarks_ref[i]
                 if 0 < x <= width and 0 < y <= height:
                     cv2.circle(ref_frame, (int(x), int(y)), 5, (0, 0, 255), -1)
 
