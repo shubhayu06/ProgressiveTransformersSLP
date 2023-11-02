@@ -13,37 +13,8 @@ from constants import PAD_TOKEN
 # sequence_ID = None
 
 
-def plot_video(joints, file_path, video_name, text_pred, text_ground, references=None, skip_frames=1, sequence_ID=None):
-    # Number of elements to pick
-    # num_elements_to_pick = 202
-
-    # Initialize an empty list to store the picked elements
-    # req_list = []
-    # ref_list = []
-    #
-    # num_set = int(len(data) / 202)
-    #
-    # print(num_set)
-    #
-    # # Loop to pick elements
-    # for i in range(num_set):
-    #     start_index = i * 202
-    #     end_index = (i + 1) * 202
-    #     subset = data[start_index:end_index]
-    #     req_list.append(subset)
-    #
-    # if references is not None:
-    #     ref_set = int(len(references) / 202)
-    #     for i in range(ref_set):
-    #         start_index = i * 202
-    #         end_index = (i + 1) * 202
-    #         subset_ref = references[start_index:end_index]
-    #         ref_list.append(subset_ref)
-    #     references = np.array(req_list)
-    #
-    # # Convert the list of picked elements back to a NumPy array
-    # picked_elements_array = np.array(req_list)
-    # # references = picked_elements_array
+def plot_video(joints, file_path, video_name, references=None, skip_frames=1, sequence_ID=None):
+    
 
     video_file = file_path + "/{}.mp4".format(video_name.split(".")[0])
     # Define the landmark names and connections to draw the skeleton
@@ -125,8 +96,6 @@ def plot_video(joints, file_path, video_name, text_pred, text_ground, references
         white_image.fill(255)  # Fill the image with white color
         cv2.putText(white_image, "Predicted Sign Pose", (180, 50), cv2.FONT_HERSHEY_SIMPLEX, 1,
                     (0, 0, 255), 2)
-        cv2.putText(white_image, f"{text_pred}", (45, 550), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
-                    (0, 0, 255), 1)
 
         # Ensure the pose_coordinates array has a length of 3 times the number of landmarks
         num_landmarks = len(pose_coordinates) // 3
@@ -189,8 +158,6 @@ def plot_video(joints, file_path, video_name, text_pred, text_ground, references
 
             cv2.putText(ref_frame, "Ground Truth Pose", (180, 50), cv2.FONT_HERSHEY_SIMPLEX, 1,
                         (0, 0, 255), 2)
-            cv2.putText(ref_frame, f"{text_ground}", (45, 550), cv2.FONT_HERSHEY_SIMPLEX, 0.8,
-                        (0, 0, 255), 1)
 
             white_image = np.concatenate((white_image, ref_frame), axis=1)
 
